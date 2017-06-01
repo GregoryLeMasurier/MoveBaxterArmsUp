@@ -3,6 +3,8 @@
 
 int main(int argc, char* argv[]){
 
+int index = 0;
+
 ros::init(argc, argv, "my_publisher");
 
 ros::NodeHandle n;
@@ -20,21 +22,10 @@ baxter_core_msgs::JointCommand msgR;
 msgL.mode = 1;
 msgR.mode = 1;
 
+for(index = 0; index < 7; index ++){
 msgL.command.push_back(0.0);
-msgL.command.push_back(0.0);
-msgL.command.push_back(0.0);
-msgL.command.push_back(0.0);
-msgL.command.push_back(0.0);
-msgL.command.push_back(0.0);
-msgL.command.push_back(0.0);
- 
 msgR.command.push_back(0.0);
-msgR.command.push_back(0.0);
-msgR.command.push_back(0.0);
-msgR.command.push_back(0.0);
-msgR.command.push_back(0.0);
-msgR.command.push_back(0.0);
-msgR.command.push_back(0.0);
+}
 
 msgL.names.push_back("left_w0");
 msgL.names.push_back("left_w1");

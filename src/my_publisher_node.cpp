@@ -11,6 +11,9 @@ ros::Publisher pubLeft = n.advertise <baxter_core_msgs::JointCommand>("/robot/li
 
 ros::Publisher pubRight = n.advertise <baxter_core_msgs::JointCommand>("/robot/limb/right/joint_command", 1000);
 
+ros::Rate loop_rate(10);
+
+while(ros::ok()){
 baxter_core_msgs::JointCommand msgL;
 baxter_core_msgs::JointCommand msgR;
 
@@ -52,7 +55,9 @@ msgR.names.push_back("right_s1");
 pubLeft.publish(msgL);
 pubRight.publish(msgR);
 
-ros::spin();
+ros::spinOnce();
+loop_rate.sleep();
+}
 
 return 0;
 }
